@@ -20,9 +20,19 @@ namespace BdeBGTD
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static RoutedCommand AProprosCmd = new RoutedCommand();
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void APropos_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("BdeB GTD\nVersion 1.0\nAuteur : Nicolas Werbrouck");
+        }
+
+        private void APropos_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }

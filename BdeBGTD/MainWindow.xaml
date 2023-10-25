@@ -6,8 +6,77 @@
         xmlns:local="clr-namespace:BdeBGTD"
         mc:Ignorable="d"
         Title="BdeB GTD" Height="720" Width="1280"
-        WindowStartupLocation="CenterScreen">
-    <Grid>
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.AProprosCmd}"
+                    Executed="APropos_Executed"
+                    CanExecute="APropos_CanExecute"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Command="{x:Static local:MainWindow.AProprosCmd}"
+                    Key="Esc"/>
+    </Window.InputBindings>
+    <Window.Resources>
+        <Style x:Key="blocTextes" >
+        </Style>
+        <Style x:Key="champSaisie">
+            <Setter Property="TextBox.Width" Value="300"/>
+            <Setter Property="TextBox.Height" Value="575"/>
+            <Setter Property="TextBox.BorderThickness" Value="6"/>
+            <Setter Property="TextBox.BorderBrush" Value="#b779af"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
 
-    </Grid>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Fichier">
+                <MenuItem Header="Quitter" InputGestureText="Ctrl+Q"/>
+            </MenuItem>
+            <MenuItem Header="_Boites d'entrés">
+                <MenuItem Header="Ajouter entrée(s)" InputGestureText="Ctrl+A"/>
+                <MenuItem Header="Traiter" InputGestureText="Ctrl+T"/>
+            </MenuItem>
+            <MenuItem Header="_Aide">
+                <MenuItem Header="À propos..."
+                          Command="{x:Static local:MainWindow.AProprosCmd}"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="425"/>
+                <ColumnDefinition Width="425"/>
+                <ColumnDefinition Width="425"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+            </Grid.RowDefinitions>
+            <DockPanel Margin="0,0,0,-30">
+                <TextBlock Text="Getting Things Done©"
+                   FontFamily="Times New Roman"
+                   FontSize="32"
+                   FontWeight="Bold"
+                   Margin="0,10,0,0"
+                   VerticalAlignment="Top"/>
+            </DockPanel>
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="40,62,25,-629">
+                <TextBlock Text="Boite d'entrées" FontSize="26" FontWeight="Bold"
+                           Height="38" Width="190"/>
+                <ListBox x:Name="Entrer" Style="{StaticResource champSaisie}" Height="554"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="40,62,25,-629">
+                <TextBlock Text="Prochaine actions" FontSize="26" FontWeight="Bold"
+               Height="38" Width="220"/>
+                <ListBox x:Name="Action" Style="{StaticResource champSaisie}" Height="554"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="2" Margin="40,62,25,-629">
+                <TextBlock Text="Système de suivi" FontSize="26" FontWeight="Bold"
+   Height="38" Width="208"/>
+                <ListBox x:Name="Suivi" Style="{StaticResource champSaisie}" Height="554"/>
+            </StackPanel>
+
+        </Grid>
+    </DockPanel>
+
 </Window>
