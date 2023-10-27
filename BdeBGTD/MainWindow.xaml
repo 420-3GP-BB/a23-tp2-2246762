@@ -12,14 +12,15 @@
         <CommandBinding Command="{x:Static local:MainWindow.AProprosCmd}"
                     Executed="APropos_Executed"
                     CanExecute="APropos_CanExecute"/>
+        <CommandBinding Command="{x:Static local:MainWindow.AddEntry}"
+                        Executed="AddEntry_Executed"
+                        CanExecute="AddEntry_CanExecute"/>
     </Window.CommandBindings>
     <Window.InputBindings>
-        <KeyBinding Command="{x:Static local:MainWindow.AProprosCmd}"
-                    Key="Esc"/>
+        <KeyBinding Command="{x:Static local:MainWindow.AProprosCmd}"/>
+       
     </Window.InputBindings>
     <Window.Resources>
-        <Style x:Key="blocTextes" >
-        </Style>
         <Style x:Key="champSaisie">
             <Setter Property="TextBox.Width" Value="300"/>
             <Setter Property="TextBox.Height" Value="575"/>
@@ -34,8 +35,18 @@
                 <MenuItem Header="Quitter" InputGestureText="Ctrl+Q"/>
             </MenuItem>
             <MenuItem Header="_Boites d'entrés">
-                <MenuItem Header="Ajouter entrée(s)" InputGestureText="Ctrl+A"/>
+                <MenuItem Header="Ajouter entrée(s)" InputGestureText="Ctrl+A"
+                          Name="AddEntryMenu"
+                          Click="AddEntryMenu_Click"
+                          />
                 <MenuItem Header="Traiter" InputGestureText="Ctrl+T"/>
+                <MenuItem.InputBindings>
+                    <KeyBinding 
+                                Key="A"
+                                Modifiers="Control"
+                                Command="{x:Static local:MainWindow.AddEntry}"/>
+                </MenuItem.InputBindings>
+                
             </MenuItem>
             <MenuItem Header="_Aide">
                 <MenuItem Header="À propos..."
@@ -68,7 +79,10 @@
            FontWeight="Bold"
            Margin="0,10,-10,0" Width="220"
            />
-                <Button Content="+" Click="BoutonPlus"/>
+                
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <Button Content="+" Click="Button_Click" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Width="200" Margin="0,0,-250,0"/>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="0" Margin="40,62,25,-629">
                 <TextBlock Text="Boite d'entrées" FontSize="26" FontWeight="Bold"
