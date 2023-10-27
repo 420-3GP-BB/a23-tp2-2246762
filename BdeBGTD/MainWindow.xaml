@@ -59,7 +59,17 @@
                    FontWeight="Bold"
                    Margin="0,10,0,0"
                    VerticalAlignment="Top"/>
+                
             </DockPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock  Name="DateText"
+           FontFamily="Times New Roman"
+           FontSize="20"
+           FontWeight="Bold"
+           Margin="0,10,-10,0" Width="220"
+           />
+                <Button Content="+" Click="BoutonPlus"/>
+            </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="0" Margin="40,62,25,-629">
                 <TextBlock Text="Boite d'entrées" FontSize="26" FontWeight="Bold"
                            Height="38" Width="190"/>
