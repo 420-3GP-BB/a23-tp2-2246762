@@ -24,23 +24,20 @@ namespace BdeBGTD
     {
         private DateTime dt;
         public static RoutedCommand AProprosCmd = new RoutedCommand();
+        public static RoutedCommand AddEntry = new RoutedCommand();
         public MainWindow()
         {
             InitializeComponent();
             dt = DateTime.Now;
             AfficherDate(dt);
-            
+            AddEntryMenu.Click += AddEntryMenu_Click;
         }
+
+        
         private void AfficherDate(DateTime dt)
         {
             DateText.Text = dt.ToString("yyyy-MM-dd");
         }
-        private void BoutonPlus(object sender, ExecutedRoutedEventArgs e)
-        {
-            dt = dt.AddDays(1);
-            AfficherDate(dt);
-        }
-
         private void APropos_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show("BdeB GTD\nVersion 1.0\nAuteur : Nicolas Werbrouck");
@@ -50,5 +47,27 @@ namespace BdeBGTD
         {
             e.CanExecute = true;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            dt = dt.AddDays(1);
+            AfficherDate(dt);
+        }
+        private void AddEntry_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            AjoutIn addEntrer = new AjoutIn();
+            addEntrer.Show();
+        }
+
+        private void AddEntry_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        private void AddEntryMenu_Click(object sender, RoutedEventArgs e)
+        {
+            AjoutIn addEntrer = new AjoutIn();
+            addEntrer.Show();
+        }
+
     }
 }
