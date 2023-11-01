@@ -67,6 +67,7 @@ namespace BdeBGTD
         {
             AjoutIn addEntrer = new AjoutIn();
             addEntrer.ShowDialog();
+
         }
 
     }
