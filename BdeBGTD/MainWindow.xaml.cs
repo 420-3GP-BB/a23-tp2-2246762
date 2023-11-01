@@ -25,6 +25,7 @@ namespace BdeBGTD
         private DateTime dt;
         public static RoutedCommand AProprosCmd = new RoutedCommand();
         public static RoutedCommand AddEntry = new RoutedCommand();
+        public static RoutedCommand Triage = new RoutedCommand();
         public MainWindow()
         {
             InitializeComponent();
@@ -70,5 +71,14 @@ namespace BdeBGTD
 
         }
 
+        private void Triage_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+
+        }
+
+        private void Triage_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
     }
 }

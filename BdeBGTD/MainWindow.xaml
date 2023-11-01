@@ -15,10 +15,13 @@
         <CommandBinding Command="{x:Static local:MainWindow.AddEntry}"
                         Executed="AddEntry_Executed"
                         CanExecute="AddEntry_CanExecute"/>
+        <CommandBinding Command="{x:Static local:MainWindow.Triage}"
+                        Executed="Triage_Executed"
+                        CanExecute="Triage_CanExecute"/>
     </Window.CommandBindings>
     <Window.InputBindings>
         <KeyBinding Command="{x:Static local:MainWindow.AProprosCmd}"/>
-       
+
     </Window.InputBindings>
     <Window.Resources>
         <Style x:Key="champSaisie">
@@ -39,64 +42,66 @@
                           Name="AddEntryMenu"
                           Click="AddEntryMenu_Click"
                           />
-                Click="AddEntryMenu_Click"/>
->>>>>>> 04a7407846ba03af09d07ade7c65103aa9817ed3
                 <MenuItem Header="Traiter" InputGestureText="Ctrl+T"/>
                 <MenuItem.InputBindings>
-                    <KeyBinding 
+                    <KeyBinding
                                 Key="A"
                                 Modifiers="Control"
                                 Command="{x:Static local:MainWindow.AddEntry}"/>
                 </MenuItem.InputBindings>
-                
             </MenuItem>
+                
             <MenuItem Header="_Aide">
                 <MenuItem Header="À propos..."
-                          Command="{x:Static local:MainWindow.AProprosCmd}"/>
+                          Command="{x:Static local:MainWindow.AProprosCmd}"
+                    />
             </MenuItem>
         </Menu>
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="425"/>
+                <ColumnDefinition Width="137.045"/>
+                <ColumnDefinition Width="31.091"/>
+                <ColumnDefinition Width="256.864"/>
                 <ColumnDefinition Width="425"/>
                 <ColumnDefinition Width="425"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="32"/>
             </Grid.RowDefinitions>
-            <DockPanel Margin="0,0,0,-30">
+            <DockPanel Margin="0,0,0,-30" Grid.ColumnSpan="3">
                 <TextBlock Text="Getting Things Done©"
                    FontFamily="Times New Roman"
                    FontSize="32"
                    FontWeight="Bold"
                    Margin="0,10,0,0"
                    VerticalAlignment="Top"/>
-                
+
             </DockPanel>
-            <StackPanel Grid.Column="2">
+            <StackPanel Grid.Column="4">
                 <TextBlock  Name="DateText"
            FontFamily="Times New Roman"
            FontSize="20"
            FontWeight="Bold"
            Margin="0,10,-10,0" Width="220"
            />
-                
+
             </StackPanel>
-            <StackPanel Grid.Column="2">
-                <Button Content="+" Click="Button_Click" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Width="200" Margin="0,0,-250,0"/>
+            <StackPanel Grid.Column="4">
+                <Button Content="+" Click="Button_Click" Foreground="Black" Background="Aqua" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Width="200" Margin="0,0,-250,0">
+                </Button>
             </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="0" Margin="40,62,25,-629">
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="40,62,25,-629" Grid.ColumnSpan="3">
                 <TextBlock Text="Boite d'entrées" FontSize="26" FontWeight="Bold"
                            Height="38" Width="190"/>
                 <ListBox x:Name="Entrer" Style="{StaticResource champSaisie}" Height="554"/>
             </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="1" Margin="40,62,25,-629">
+            <StackPanel Grid.Row="0" Grid.Column="3" Margin="40,62,25,-629">
                 <TextBlock Text="Prochaine actions" FontSize="26" FontWeight="Bold"
                Height="38" Width="220"/>
                 <ListBox x:Name="Action" Style="{StaticResource champSaisie}" Height="554"/>
             </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="2" Margin="40,62,25,-629">
+            <StackPanel Grid.Row="0" Grid.Column="4" Margin="40,62,25,-629">
                 <TextBlock Text="Système de suivi" FontSize="26" FontWeight="Bold"
    Height="38" Width="208"/>
                 <ListBox x:Name="Suivi" Style="{StaticResource champSaisie}" Height="554"/>
@@ -104,5 +109,4 @@
 
         </Grid>
     </DockPanel>
-
 </Window>
