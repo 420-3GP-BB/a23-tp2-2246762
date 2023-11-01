@@ -10,7 +10,7 @@
 ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-<<<<<<< HEAD
+
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="230"/>
@@ -39,15 +39,6 @@ ResizeMode="NoResize">
         <Button Grid.Row="3" Height="50" Width="200" Margin="90,0,0,0" HorizontalAlignment="Left" FontSize="26">Confirmer</Button>
         <Button Grid.Row="3" Height="50" Width="200" Margin="0,0,90,0" HorizontalAlignment="Right" FontSize="26">Annuler</Button>
         <CheckBox Name="KeepOpen" Grid.Row="4" Content="Gardez la fenêtre ouverte"/>
-=======
-            <RowDefinition Height="75"/>
-            <RowDefinition Height="375"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="266"/>
-            <ColumnDefinition Width="266"/>
-            <ColumnDefinition Width="266"/>
-        </Grid.ColumnDefinitions>
->>>>>>> 04a7407846ba03af09d07ade7c65103aa9817ed3
+        
     </Grid>
 </Window>

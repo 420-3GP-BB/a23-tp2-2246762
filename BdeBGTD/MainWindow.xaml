@@ -37,11 +37,9 @@
             <MenuItem Header="_Boites d'entrés">
                 <MenuItem Header="Ajouter entrée(s)" InputGestureText="Ctrl+A"
                           Name="AddEntryMenu"
-<<<<<<< HEAD
                           Click="AddEntryMenu_Click"
                           />
-=======
-                          Click="AddEntryMenu_Click"/>
+                Click="AddEntryMenu_Click"/>
 >>>>>>> 04a7407846ba03af09d07ade7c65103aa9817ed3
                 <MenuItem Header="Traiter" InputGestureText="Ctrl+T"/>
                 <MenuItem.InputBindings>
