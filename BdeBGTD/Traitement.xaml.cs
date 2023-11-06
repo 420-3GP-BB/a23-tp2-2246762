@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace BdeBGTD
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for Traitement.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Traitement : Window
     {
-        public Window1()
+        public Traitement()
         {
             InitializeComponent();
         }
