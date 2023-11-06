@@ -8,7 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="andretti094_a_diamond_on_the_top_of_a_gold_mountain_b844ac04-17af-44bd-87b7-81498e2b882a.png" />
+    <None Remove="Price_MW3_model.png" />
+    <None Remove="Spoon_gold.png" />
+    <None Remove="zbzx_Monster__Human_with_a_wolf_head_surronded_by_a_blazing_fir_75d2df2e-c50e-40c4-ad8c-cf0e92b89737.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ClassesAffaire\ClassesAffaire.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="andretti094_a_diamond_on_the_top_of_a_gold_mountain_b844ac04-17af-44bd-87b7-81498e2b882a.png" />
+    <Resource Include="Price_MW3_model.png" />
+    <Resource Include="Spoon_gold.png" />
+    <Resource Include="zbzx_Monster__Human_with_a_wolf_head_surronded_by_a_blazing_fir_75d2df2e-c50e-40c4-ad8c-cf0e92b89737.png" />
   </ItemGroup>
 
 </Project>

@@ -9,18 +9,15 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Window.CommandBindings>
-        <CommandBinding Command="{x:Static local:MainWindow.AProprosCmd}"
-                    Executed="APropos_Executed"
-                    CanExecute="APropos_CanExecute"/>
-        <CommandBinding Command="{x:Static local:MainWindow.AddEntry}"
+        <!--<CommandBinding Command="{x:Static local:MainWindow.AddEntry}"
                         Executed="AddEntry_Executed"
-                        CanExecute="AddEntry_CanExecute"/>
-        <CommandBinding Command="{x:Static local:MainWindow.Triage}"
+                        CanExecute="AddEntry_CanExecute"/>-->
+        <!--<CommandBinding Command="{x:Static local:MainWindow.Triage}"
                         Executed="Triage_Executed"
-                        CanExecute="Triage_CanExecute"/>
+                        CanExecute="Triage_CanExecute"/>-->
     </Window.CommandBindings>
     <Window.InputBindings>
-        <KeyBinding Command="{x:Static local:MainWindow.AProprosCmd}"/>
+        <!--<KeyBinding Command="{x:Static local:MainWindow.AProprosCmd}"/>-->
 
     </Window.InputBindings>
     <Window.Resources>
@@ -32,7 +29,6 @@
         </Style>
     </Window.Resources>
     <DockPanel>
-
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Fichier">
                 <MenuItem Header="Quitter" InputGestureText="Ctrl+Q"/>
@@ -42,19 +38,25 @@
                           Name="AddEntryMenu"
                           Click="AddEntryMenu_Click"
                           />
-                <MenuItem Header="Traiter" InputGestureText="Ctrl+T"/>
+                <MenuItem Header="Traiter" InputGestureText="Ctrl+T"
+                          Name="TraiterMenu"
+                          Click="TraiterMenu_Click"/>
                 <MenuItem.InputBindings>
-                    <KeyBinding
+                    <!--<KeyBinding
                                 Key="A"
                                 Modifiers="Control"
-                                Command="{x:Static local:MainWindow.AddEntry}"/>
+                                Command="{x:Static local:MainWindow.AddEntry}"/>-->
+                    <!--<KeyBinding 
+                        Key="T"
+                        Modifiers="Ctrl"
+                        Command="{x:Static local:MainWindow.Triage}"/>-->
                 </MenuItem.InputBindings>
             </MenuItem>
-                
+
             <MenuItem Header="_Aide">
-                <MenuItem Header="À propos..."
+                <!--<MenuItem Header="À propos..."
                           Command="{x:Static local:MainWindow.AProprosCmd}"
-                    />
+                    />-->
             </MenuItem>
         </Menu>
 
@@ -69,6 +71,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="32"/>
             </Grid.RowDefinitions>
+
             <DockPanel Margin="0,0,0,-30" Grid.ColumnSpan="3">
                 <TextBlock Text="Getting Things Done©"
                    FontFamily="Times New Roman"
@@ -78,6 +81,9 @@
                    VerticalAlignment="Top"/>
 
             </DockPanel>
+
+
+
             <StackPanel Grid.Column="4">
                 <TextBlock  Name="DateText"
            FontFamily="Times New Roman"
@@ -88,7 +94,10 @@
 
             </StackPanel>
             <StackPanel Grid.Column="4">
-                <Button Content="+" Click="Button_Click" Foreground="Black" Background="Aqua" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Width="200" Margin="0,0,-250,0">
+                <Button Content="+" Click="Button_Click" Foreground="White" FontFamily="Times New Roman"   FontSize="20" FontWeight="Bold" Width="200">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Spoon_gold.png"/>
+                    </Button.Background>
                 </Button>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="0" Margin="40,62,25,-629" Grid.ColumnSpan="3">
@@ -106,6 +115,8 @@
    Height="38" Width="208"/>
                 <ListBox x:Name="Suivi" Style="{StaticResource champSaisie}" Height="554"/>
             </StackPanel>
+
+
 
         </Grid>
     </DockPanel>
