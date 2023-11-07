@@ -71,28 +71,19 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="32"/>
             </Grid.RowDefinitions>
-<<<<<<< HEAD
-
-=======
             
->>>>>>> ba2b5f4597e706c222dffe81e1d262c88e234839
             <DockPanel Margin="0,0,0,-30" Grid.ColumnSpan="3">
-                <TextBlock Text="Getting Things Done©"
+                
+                    <TextBlock Text="Getting Things Done©"
                    FontFamily="Times New Roman"
                    FontSize="32"
                    FontWeight="Bold"
                    Margin="0,10,0,0"
                    VerticalAlignment="Top"/>
 
-            </DockPanel>
+                </DockPanel>
 
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> ba2b5f4597e706c222dffe81e1d262c88e234839
-
-            <StackPanel Grid.Column="4">
+                <StackPanel Grid.Column="4">
             <TextBlock  Name="DateText"
            FontFamily="Times New Roman"
            FontSize="20"
@@ -124,13 +115,6 @@
                 <ListBox x:Name="Suivi" Style="{StaticResource champSaisie}" Height="554"/>
             </StackPanel>
 
-<<<<<<< HEAD
-
-
-=======
-            
-            
->>>>>>> ba2b5f4597e706c222dffe81e1d262c88e234839
         </Grid>
     </DockPanel>
 </Window>
