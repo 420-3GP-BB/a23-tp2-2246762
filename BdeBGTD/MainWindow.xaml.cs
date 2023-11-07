@@ -32,16 +32,9 @@ namespace BdeBGTD
             dt = DateTime.Now;
             AfficherDate(dt);
             AddEntryMenu.Click += AddEntryMenu_Click;
-            TraiterMenu.Click += TraiterMenu_Click;
-
         }
 
-        private void TraiterMenu_Click(object sender, RoutedEventArgs e)
-        {
-            Traitement traiter = new Traitement();
-            traiter.ShowDialog();
-        }
-
+        
         private void AfficherDate(DateTime dt)
         {
             DateText.Text = dt.ToString("yyyy-MM-dd");
@@ -80,13 +73,12 @@ namespace BdeBGTD
 
         private void Triage_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+
         }
 
         private void Triage_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Traitement traiter = new Traitement();
-            traiter.ShowDialog();
+
         }
     }
 }

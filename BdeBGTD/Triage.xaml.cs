@@ -15,12 +15,16 @@ using System.Windows.Shapes;
 namespace BdeBGTD
 {
     /// <summary>
+<<<<<<< HEAD:BdeBGTD/planifAction.xaml.cs
 
     /// Interaction logic for planifAction.xaml
+=======
+    /// Interaction logic for Window1.xaml
+>>>>>>> parent of fa806fb (Ajout d'image et de page + modification du codeModification du code):BdeBGTD/Triage.xaml.cs
     /// </summary>
-    public partial class planifAction : Window
+    public partial class Window1 : Window
     {
-        public planifAction()
+        public Window1()
         {
             InitializeComponent();
         }
