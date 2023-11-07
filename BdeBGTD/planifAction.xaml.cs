@@ -15,11 +15,19 @@ using System.Windows.Shapes;
 namespace BdeBGTD
 {
     /// <summary>
+<<<<<<<< HEAD:BdeBGTD/planifAction.xaml.cs
     /// Interaction logic for planifAction.xaml
     /// </summary>
     public partial class planifAction : Window
     {
         public planifAction()
+========
+    /// Interaction logic for Traitement.xaml
+    /// </summary>
+    public partial class Traitement : Window
+    {
+        public Traitement()
+>>>>>>>> ba2b5f4597e706c222dffe81e1d262c88e234839:BdeBGTD/Traitement.xaml.cs
         {
             InitializeComponent();
         }

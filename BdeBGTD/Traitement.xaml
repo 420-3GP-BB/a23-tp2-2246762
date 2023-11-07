@@ -6,10 +6,6 @@
         xmlns:local="clr-namespace:BdeBGTD"
         mc:Ignorable="d"
         Title="Bdeb GTD" Height="450" Width="800"
-        ResizeMode="NoResize" FontFamily="Franklin Gothic Demi">
-    <Window.Background>
-        <ImageBrush ImageSource="/zbzx_Monster__Human_with_a_wolf_head_surronded_by_a_blazing_fir_75d2df2e-c50e-40c4-ad8c-cf0e92b89737.png"/>
-    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -17,31 +13,31 @@
         </Grid.ColumnDefinitions>
 
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="260"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="260"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
 
             <TextBlock
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontWeight="Bold"
+       HorizontalAlignment="Center"
+       VerticalAlignment="Center"
+       FontWeight="Bold"
                 FontFamily="Times New Roman"
-                FontSize="28"
+       FontSize="28"
                 Grid.Row="0">Tri de la boîte d'entrée</TextBlock>
 
 
-            <TextBox Grid.Row="1"
-                     VerticalAlignment="Center"
-                     Margin="42,0,370,0"
+        <TextBox Grid.Row="1"
+                 VerticalAlignment="Center"
+                 Margin="42,0,370,0"
                      MaxWidth="400"
                      Height="40"   
                      Grid.ColumnSpan="2" 
                      Name="BUG"/>
 
-            <Button Grid.Row="1" 
+        <Button Grid.Row="1" 
                 HorizontalAlignment="Left"
                 Width="150" Margin="450,10,0,10" Grid.Column="1">Retour</Button>
             <Button Grid.Row="3" 
@@ -65,4 +61,5 @@
             </TextBox>
         </Grid>
     </Grid>
+
 </Window>
