@@ -14,7 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml;
 using System.IO;
 using GTD;
@@ -27,9 +26,10 @@ namespace BdeBGTD
         private DateTime dt;
 
         private GestionnaireGTD gestionnaire;
-        private char DIR_SEPARATOR = System.IO.Path.DirectorySeparatorChar;
-        private string pathFichier;
-       
+        char DIR_SEPARATOR = Path.DirectorySeparatorChar;   // Permet d'avoir un séparateur portable
+        string nomFichier = "bdeb_gtd.xml";
+
+
 
         /// Commande afin de changer de page
         public static RoutedCommand AProprosCmd = new RoutedCommand();
@@ -39,6 +39,7 @@ namespace BdeBGTD
 
         public MainWindow()
         {
+
             InitializeComponent();
 
             //
@@ -48,7 +49,7 @@ namespace BdeBGTD
             dt = DateTime.Now;
             AfficherDate(dt);
 
-            pathFichier = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets", "CopierFichier", "bdeb_gtd.xml");
+//            pathFichier = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets", "CopierFichier", "bdeb_gtd.xml");
             //"C:\Users\Lekid\Documents\GitHub\a23-tp2-2246762\CopierFichier\assets\bdeb_gtd.xml"
 
             ChargerFichierXml();
@@ -68,11 +69,14 @@ namespace BdeBGTD
         //Methode qui charge le fichier Xml
         private void ChargerFichierXml()
         {
+            string pathMesDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string pathDossier = $"{pathMesDocuments}{DIR_SEPARATOR}Fichiers-3GP";
+            string pathFichier = $"{pathDossier}{DIR_SEPARATOR}{nomFichier}";
+
             XmlDocument document = new XmlDocument();
-                document.LoadXml(pathFichier);
+                document.Load(pathFichier);
             XmlElement racine = document.DocumentElement;
 
-            XmlElement unNoeud = racine["element_gtd"];
             XmlNodeList elementGTD = racine.GetElementsByTagName("element_gtd");
 
             foreach (XmlElement unElement in elementGTD)
