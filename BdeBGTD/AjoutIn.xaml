@@ -31,13 +31,14 @@ ResizeMode="NoResize">
                    FontSize="24"
                    >Nom de l'élément : </TextBlock>
         <TextBox Grid.Row="1"
+                 Name="Nom"
                  VerticalAlignment="Center"
                  Margin="0,0,-200,0"
                  MaxWidth="600"
             ></TextBox>
-        <TextBox Grid.Row="2" Margin="5,5,5,5"/>
+        <TextBox Grid.Row="2" Margin="5,5,5,5" Name="Description"/>
         <Button Grid.Row="3" Height="50" Width="200" Margin="90,0,0,0" HorizontalAlignment="Left" FontSize="26" Click="ConfirmerButton_Click">Confirmer</Button>
-        <Button Grid.Row="3" Height="50" Width="200" Margin="0,0,90,0" HorizontalAlignment="Right" FontSize="26">Annuler</Button>
+        <Button Grid.Row="3" Height="50" Width="200" Margin="0,0,90,0" HorizontalAlignment="Right" FontSize="26" Click="AnnulerButton_Click">Annuler</Button>
         <CheckBox Name="KeepOpen" Grid.Row="4" Content="Gardez la fenêtre ouverte"/>
         
     </Grid>

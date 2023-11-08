@@ -35,6 +35,7 @@ namespace BdeBGTD
         public static RoutedCommand AProprosCmd = new RoutedCommand();
         public static RoutedCommand AddEntry = new RoutedCommand();
         public static RoutedCommand Triage = new RoutedCommand();
+        public static RoutedCommand Leave = new RoutedCommand();
 
 
         public MainWindow()
@@ -113,8 +114,9 @@ namespace BdeBGTD
         }
         private void AddEntry_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            AjoutIn addEntrer = new AjoutIn();
+            AjoutIn addEntrer = new AjoutIn(gestionnaire);
             addEntrer.Show();
+            
         }
 
         private void AddEntry_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -135,13 +137,62 @@ namespace BdeBGTD
         private void Triage_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Traitement traiter = new Traitement();
-            traiter.ShowDialog();
+            traiter.Show();
         }
 
         private void TraiterMenu_Click(object sender, RoutedEventArgs e)
         {
-            Traitement traiter = new Traitement();
-            traiter.ShowDialog();
+            Triage_Executed(sender, null);
+        }
+
+        private void Leave_Click(object sender, RoutedEventArgs e)
+        {
+            Leave_Executed(sender,null);
+        }
+
+        private void Leave_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+                XmlDocument document = new XmlDocument();
+
+                // Créez un élément racine pour le document
+                XmlElement racine = document.CreateElement("gtd");
+                document.AppendChild(racine);
+
+                // Parcourez les éléments de la liste ListeEntrees de votre gestionnaire
+                foreach (ElementGTD element in gestionnaire.ListeEntrees)
+                {
+                    // Créez un élément "element_gtd" pour chaque élément de la liste
+                    XmlElement elementXml = document.CreateElement("element_gtd");
+                    elementXml.SetAttribute("nom", element.Nom);
+                    elementXml.SetAttribute("statut", element.Statut);
+                    elementXml.InnerText = element.Description;
+
+                    // Ajoutez l'élément "element_gtd" à l'élément racine
+                    racine.AppendChild(elementXml);
+                }
+
+                // Sauvegardez le document dans le fichier
+                string pathMesDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string pathDossier = $"{pathMesDocuments}{DIR_SEPARATOR}Fichiers-3GP";
+                string pathFichier = $"{pathDossier}{DIR_SEPARATOR}{nomFichier}";
+                document.Save(pathFichier);
+                this.Close();
+            
+        }
+
+        private void Leave_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+
         }
     }
 }

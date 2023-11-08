@@ -6,13 +6,7 @@
         xmlns:local="clr-namespace:BdeBGTD"
         mc:Ignorable="d"
         Title="Bdeb GTD" Height="450" Width="800"
-    >
-    <Window.Background>
-        <ImageBrush ImageSource="zbzx_Monster__Human_with_a_wolf_head_surronded_by_a_blazing_fir_75d2df2e-c50e-40c4-ad8c-cf0e92b89737.png"/>
-
-
-
-    </Window.Background>
+        >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -46,7 +40,7 @@
 
         <Button Grid.Row="1" 
                 HorizontalAlignment="Left"
-                Width="150" Margin="450,10,0,10" Grid.Column="1">Retour</Button>
+                Width="150" Margin="450,10,0,10" Grid.Column="1" Click="Button_Click">Retour</Button>
             <Button Grid.Row="3" 
                     HorizontalAlignment="Left"
                     Width="150" Margin="500,10,0,10" Grid.Column="1">Poubelle</Button>
@@ -60,12 +54,8 @@
                     HorizontalAlignment="Left"
                     Width="150" Margin="0,10,0,10" Grid.Column="1">Incuber</Button>
 
-            
+
             <TextBox Grid.Row="2" MaxWidth="600">
-                <TextBox.Background>
-                    
-                    <ImageBrush ImageSource="Price_MW3_model.png"></ImageBrush>
-                </TextBox.Background>
             </TextBox>
         </Grid>
     </Grid>
