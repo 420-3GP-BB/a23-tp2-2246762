@@ -2,8 +2,11 @@
 
 namespace GTD
 {
+    
     public class GestionnaireGTD
     {
+        
+
         public ObservableCollection<ElementGTD> ListeEntrees { get; private set; }
         public ObservableCollection<ElementGTD> ListeActions { get; private set; }
         public ObservableCollection<ElementGTD> ListeSuivis { get; private set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,20 +15,20 @@ using System.Windows.Shapes;
 
 namespace BdeBGTD
 {
-    /// <summary>
-<<<<<<< HEAD:BdeBGTD/planifAction.xaml.cs
-
-    /// Interaction logic for planifAction.xaml
-=======
-    /// Interaction logic for Window1.xaml
->>>>>>> parent of fa806fb (Ajout d'image et de page + modification du codeModification du code):BdeBGTD/Triage.xaml.cs
-    /// </summary>
-    public partial class Window1 : Window
+    public partial class dateSuivi : Window
     {
-        public Window1()
+        public dateSuivi()
         {
             InitializeComponent();
         }
 
+        private void selectionDate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (selectionDate.SelectedDate.HasValue)
+            {
+                DateTime selectedDate = selectionDate.SelectedDate.Value;
+
+            }
+        }
     }
 }

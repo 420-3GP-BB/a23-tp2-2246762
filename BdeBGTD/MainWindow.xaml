@@ -1,35 +1,36 @@
 ﻿<Window x:Class="BdeBGTD.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BdeBGTD"
-        mc:Ignorable="d"
         Title="BdeB GTD" Height="720" Width="1280"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:MainWindow.AProprosCmd}"
-                    Executed="APropos_Executed"
-                    CanExecute="APropos_CanExecute"/>
+                        Executed="APropos_Executed"
+                        CanExecute="APropos_CanExecute"/>
         <CommandBinding Command="{x:Static local:MainWindow.AddEntry}"
                         Executed="AddEntry_Executed"
                         CanExecute="AddEntry_CanExecute"/>
         <CommandBinding Command="{x:Static local:MainWindow.Triage}"
                         Executed="Triage_Executed"
                         CanExecute="Triage_CanExecute"/>
+
     </Window.CommandBindings>
     <Window.InputBindings>
         <KeyBinding Command="{x:Static local:MainWindow.AProprosCmd}"/>
+        <KeyBinding Key="A" Modifiers="Control" Command="{x:Static local:MainWindow.AddEntry}" />
+        <KeyBinding Key="T" Modifiers="Ctrl" Command="{x:Static local:MainWindow.Triage}"/>
 
     </Window.InputBindings>
     <Window.Resources>
-        <Style x:Key="champSaisie">
-            <Setter Property="TextBox.Width" Value="300"/>
-            <Setter Property="TextBox.Height" Value="575"/>
-            <Setter Property="TextBox.BorderThickness" Value="6"/>
-            <Setter Property="TextBox.BorderBrush" Value="#b779af"/>
+        <Style x:Key="champSaisie" TargetType="TextBox">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Height" Value="575"/>
+            <Setter Property="BorderThickness" Value="6"/>
+            <Setter Property="BorderBrush" Value="#b779af"/>
         </Style>
+        
     </Window.Resources>
     <DockPanel>
 
@@ -41,20 +42,21 @@
                 <MenuItem Header="Ajouter entrée(s)" InputGestureText="Ctrl+A"
                           Name="AddEntryMenu"
                           Click="AddEntryMenu_Click"
-                          />
-                <MenuItem Header="Traiter" InputGestureText="Ctrl+T"/>
-                <MenuItem.InputBindings>
-                    <KeyBinding
-                                Key="A"
-                                Modifiers="Control"
-                                Command="{x:Static local:MainWindow.AddEntry}"/>
-                </MenuItem.InputBindings>
+                />
+                <MenuItem Header="Traiter" InputGestureText="Ctrl+T"
+                          Name="TraiterMenu"
+                          Click="TraiterMenu_Click">
+                    <MenuItem.InputBindings>
+                        <KeyBinding Key="A" Modifiers="Control" Command="{x:Static local:MainWindow.AddEntry}"/>
+                        <KeyBinding Key="T" Modifiers="Control" Command="{x:Static local:MainWindow.Triage}"/>
+                    </MenuItem.InputBindings>
+                </MenuItem>
             </MenuItem>
-                
+
             <MenuItem Header="_Aide">
                 <MenuItem Header="À propos..."
                           Command="{x:Static local:MainWindow.AProprosCmd}"
-                    />
+                />
             </MenuItem>
         </Menu>
 
@@ -69,56 +71,52 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="32"/>
             </Grid.RowDefinitions>
-<<<<<<< HEAD
-            
-=======
->>>>>>> parent of fa806fb (Ajout d'image et de page + modification du codeModification du code)
             <DockPanel Margin="0,0,0,-30" Grid.ColumnSpan="3">
-                
-                    <TextBlock Text="Getting Things Done©"
-                   FontFamily="Times New Roman"
-                   FontSize="32"
-                   FontWeight="Bold"
-                   Margin="0,10,0,0"
-                   VerticalAlignment="Top"/>
-
-<<<<<<< HEAD
-                </DockPanel>
-
-                <StackPanel Grid.Column="4">
-            <TextBlock  Name="DateText"
-=======
+                <TextBlock Text="Getting Things Done©"
+                           FontFamily="Times New Roman"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Margin="0,10,0,0"
+                           VerticalAlignment="Top"/>
             </DockPanel>
-            <StackPanel Grid.Column="4">
-                <TextBlock  Name="DateText"
->>>>>>> parent of fa806fb (Ajout d'image et de page + modification du codeModification du code)
-           FontFamily="Times New Roman"
-           FontSize="20"
-           FontWeight="Bold"
-           Margin="0,10,-10,0" Width="220"
-           />
 
-            </StackPanel>
             <StackPanel Grid.Column="4">
-                <Button Content="+" Click="Button_Click" Foreground="Black" Background="Aqua" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Width="200" Margin="0,0,-250,0">
+                <TextBlock Name="DateText"
+                           FontFamily="Times New Roman"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Margin="0,10,-10,0" Width="220"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="4">
+                <Button Content="+" Click="Button_Click" Foreground="White" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" Width="189" Margin="0,0,-250,0" RenderTransformOrigin="0.054,0.48" Height="29">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Spoon_gold.png"/>
+                    </Button.Background>
                 </Button>
             </StackPanel>
+
             <StackPanel Grid.Row="0" Grid.Column="0" Margin="40,62,25,-629" Grid.ColumnSpan="3">
                 <TextBlock Text="Boite d'entrées" FontSize="26" FontWeight="Bold"
                            Height="38" Width="190"/>
-                <ListBox x:Name="Entrer" Style="{StaticResource champSaisie}" Height="554"/>
+                <ListBox x:Name="Entrer"  Height="554" BorderBrush="#FF0040FF">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Nom}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="3" Margin="40,62,25,-629">
                 <TextBlock Text="Prochaine actions" FontSize="26" FontWeight="Bold"
-               Height="38" Width="220"/>
-                <ListBox x:Name="Action" Style="{StaticResource champSaisie}" Height="554"/>
+                           Height="38" Width="220"/>
+                <ListBox x:Name="Action" BorderBrush="#FF0040FF" Height="554"/>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="4" Margin="40,62,25,-629">
                 <TextBlock Text="Système de suivi" FontSize="26" FontWeight="Bold"
-   Height="38" Width="208"/>
-                <ListBox x:Name="Suivi" Style="{StaticResource champSaisie}" Height="554"/>
+                           Height="38" Width="208"/>
+                <ListBox x:Name="Suivi" BorderBrush="#FF0040FF" Height="554"/>
             </StackPanel>
-
         </Grid>
     </DockPanel>
 </Window>

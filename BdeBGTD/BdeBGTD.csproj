@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Spoon_gold.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ClassesAffaire\ClassesAffaire.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Spoon_gold.png" />
   </ItemGroup>
 
 </Project>

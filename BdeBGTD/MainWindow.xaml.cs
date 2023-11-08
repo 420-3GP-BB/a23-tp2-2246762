@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -14,27 +15,79 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
+using System.IO;
+using GTD;
 
 namespace BdeBGTD
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        /// Variable permettant de voir la date ainsi que de rajouter une journee
         private DateTime dt;
+
+        private GestionnaireGTD gestionnaire;
+        private char DIR_SEPARATOR = System.IO.Path.DirectorySeparatorChar;
+        private string pathFichier;
+       
+
+        /// Commande afin de changer de page
         public static RoutedCommand AProprosCmd = new RoutedCommand();
         public static RoutedCommand AddEntry = new RoutedCommand();
         public static RoutedCommand Triage = new RoutedCommand();
+
+
         public MainWindow()
         {
             InitializeComponent();
+
+            //
+           gestionnaire = new GestionnaireGTD();
+
+            // Prends la date d'aujord'hui et l'affiche dans le programmes
             dt = DateTime.Now;
             AfficherDate(dt);
+
+            pathFichier = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets", "CopierFichier", "bdeb_gtd.xml");
+            //"C:\Users\Lekid\Documents\GitHub\a23-tp2-2246762\CopierFichier\assets\bdeb_gtd.xml"
+
+            ChargerFichierXml();
+
+            Entrer.ItemsSource = gestionnaire.ListeEntrees;
+
+
+            // Affiche les pages lorsqu'on click sur le menu
             AddEntryMenu.Click += AddEntryMenu_Click;
+            TraiterMenu.Click += TraiterMenu_Click;
+
+
+
         }
 
-        
+
+        //Methode qui charge le fichier Xml
+        private void ChargerFichierXml()
+        {
+            XmlDocument document = new XmlDocument();
+                document.LoadXml(pathFichier);
+            XmlElement racine = document.DocumentElement;
+
+            XmlElement unNoeud = racine["element_gtd"];
+            XmlNodeList elementGTD = racine.GetElementsByTagName("element_gtd");
+
+            foreach (XmlElement unElement in elementGTD)
+            {
+                ElementGTD nouvelElement = new ElementGTD
+                {
+                    Nom = unElement.GetAttribute("nom"),
+                    Statut = unElement.GetAttribute("statut"),
+                    Description = unElement.InnerText
+                };
+
+                gestionnaire.ListeEntrees.Add(nouvelElement);
+            }
+        }
+
         private void AfficherDate(DateTime dt)
         {
             DateText.Text = dt.ToString("yyyy-MM-dd");
@@ -66,19 +119,25 @@ namespace BdeBGTD
         }
         private void AddEntryMenu_Click(object sender, RoutedEventArgs e)
         {
-            AjoutIn addEntrer = new AjoutIn();
-            addEntrer.ShowDialog();
+            AddEntry_Executed(sender, null);
 
         }
 
         private void Triage_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-
+            e.CanExecute= true;
         }
 
         private void Triage_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            Traitement traiter = new Traitement();
+            traiter.ShowDialog();
+        }
 
+        private void TraiterMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Traitement traiter = new Traitement();
+            traiter.ShowDialog();
         }
     }
 }

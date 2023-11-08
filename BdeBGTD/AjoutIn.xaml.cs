@@ -23,5 +23,18 @@ namespace BdeBGTD
         {
             InitializeComponent();
         }
+
+        private void ConfirmerButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (KeepOpen.IsChecked == true)
+            {
+                // If the CheckBox is checked, do nothing (keep the window open).
+            }
+            else
+            {
+                // If the CheckBox is not checked, close the window.
+                this.Close();
+            }
+        }
     }
 }
