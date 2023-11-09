@@ -27,7 +27,6 @@ namespace BdeBGTD
             if (selectionDate.SelectedDate.HasValue)
             {
                 DateTime selectedDate = selectionDate.SelectedDate.Value;
-
             }
         }
     }

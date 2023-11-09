@@ -29,7 +29,7 @@ namespace BdeBGTD
         private void ConfirmerButton_Click(object sender, RoutedEventArgs e)
         {
 
-            // Récupérez le nom et la description depuis les contrôles de la fenêtre
+            // Récupérez le nom et la description
             string nom = Nom.Text;
             string description = Description.Text;
 
@@ -37,9 +37,9 @@ namespace BdeBGTD
             // Vérifiez si le champ Nom est vide
             if (string.IsNullOrEmpty(nom))
             {
-                // Affichez un message d'erreur à l'utilisateur ou effectuez une autre action appropriée
+                // Affiche un message d'erreur indicant qu'il est obligatoire d'avoir un nom pour avoir un element et quitte la methode 
                 MessageBox.Show("Le champ Nom est obligatoire.");
-                return; // Sortez de la méthode sans ajouter l'élément
+                return;
             }
 
             // Créez un nouvel élément ElementGTD
@@ -47,26 +47,27 @@ namespace BdeBGTD
             {
                 Nom = nom,
                 Description = description,
-                Statut = "Entree" // Vous pouvez définir le statut comme requis
+                Statut = "Entree"
             };
 
-            // Ajoutez l'élément à la collection ListeEntrees de votre gestionnaire
+            // Ajoutez l'élément à la collection ListeEntrees
             gestionnaire.ListeEntrees.Add(nouvelElement);
 
-            // Si la case à cocher "Rester ouvert" n'est pas cochée, fermez la fenêtre
+            // Fait en sorte que si la case n'est pas cocher fermer la page
             if (!KeepOpen.IsChecked.Value)
             {
                 this.Close();
             }
             else
             {
-                // Effacez les champs textes pour permettre d'entrer de nouvelles valeurs
+                // Effacez les champs textes 
                 Nom.Text = "";
                 Description.Text = "";
             }
             
         }
 
+        //  Ferme la page peut importe que la case sois cocher ou non
         private void AnnulerButton_Click(object sender, RoutedEventArgs e)
         {
                 this.Close();

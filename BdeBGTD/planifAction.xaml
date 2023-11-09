@@ -6,12 +6,30 @@
         xmlns:local="clr-namespace:BdeBGTD"
         mc:Ignorable="d"
         Title="BdeB-GTD" Height="450" Width="800"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="styleTexte">
+            <Setter Property="FontFamily" Value="Times new roman"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="Window">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="Orange" Offset="0"/>
+                        <GradientStop Color="Violet" Offset="0.5"/>
+                        <GradientStop Color="DarkMagenta" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/andretti094_a_diamond_on_the_top_of_a_gold_mountain_b844ac04-17af-44bd-87b7-81498e2b882a.png" Stretch="None" TileMode="FlipY"/>
-        </Grid.Background>
-        <TextBlock HorizontalAlignment="Center" FontSize="32" FontWeight="Bold"> Planifier une action</TextBlock>
+        <TextBlock Style="{StaticResource styleTexte}"> Planifier une action</TextBlock>
         <Calendar
             VerticalAlignment="Center" Background="{x:Null}"
             />

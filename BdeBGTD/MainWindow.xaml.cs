@@ -38,25 +38,29 @@ namespace BdeBGTD
         public static RoutedCommand Leave = new RoutedCommand();
 
 
+
         public MainWindow()
         {
 
             InitializeComponent();
 
             //
-           gestionnaire = new GestionnaireGTD();
+            gestionnaire = new GestionnaireGTD();
 
             // Prends la date d'aujord'hui et l'affiche dans le programmes
             dt = DateTime.Now;
             AfficherDate(dt);
 
-//            pathFichier = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets", "CopierFichier", "bdeb_gtd.xml");
-            //"C:\Users\Lekid\Documents\GitHub\a23-tp2-2246762\CopierFichier\assets\bdeb_gtd.xml"
 
+            //Charge le fichier xml
             ChargerFichierXml();
 
-            Entrer.ItemsSource = gestionnaire.ListeEntrees;
 
+            Entrer.ItemsSource = gestionnaire.ListeEntrees;
+            Entrer.MouseDoubleClick += Entrer_MouseDoubleClick;
+
+            //Fait en sorte de verifier que s'il n'y a rien dams la liste entrees l'option traiter sera fermer.
+            TraiterMenu.IsEnabled = gestionnaire.ListeEntrees.Count > 0;
 
             // Affiche les pages lorsqu'on click sur le menu
             AddEntryMenu.Click += AddEntryMenu_Click;
@@ -64,6 +68,11 @@ namespace BdeBGTD
 
 
 
+        }
+
+        private void Entrer_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Triage_Executed(sender, null);
         }
 
 
@@ -136,8 +145,14 @@ namespace BdeBGTD
 
         private void Triage_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Traitement traiter = new Traitement();
-            traiter.Show();
+            if (Entrer.SelectedItem is ElementGTD element)
+            {
+                Traitement pageTraitement = new Traitement(element);
+                if (pageTraitement.ShowDialog() == true) 
+                {
+                    Entrer.Items.Refresh();
+                }
+            }
         }
 
         private void TraiterMenu_Click(object sender, RoutedEventArgs e)
@@ -185,14 +200,6 @@ namespace BdeBGTD
             e.CanExecute = true;
         }
 
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-
-        }
-
-        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
