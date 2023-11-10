@@ -118,7 +118,16 @@
             <StackPanel Grid.Row="0" Grid.Column="4" Margin="40,62,25,-629">
                 <TextBlock Text="Système de suivi" FontSize="26" FontWeight="Bold"
                            Height="38" Width="208"/>
-                <ListBox x:Name="Suivi" BorderBrush="#FF0040FF" Height="554"/>
+                <ListBox x:Name="Suivi" BorderBrush="#FF0040FF" Height="554">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Nom}"/>
+                                <TextBlock Text="{Binding Date}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
         </Grid>
     </DockPanel>

@@ -22,11 +22,13 @@ namespace BdeBGTD
             InitializeComponent();
         }
 
+        //Methode qui selection les dates et ferme la page
         private void selectionDate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (selectionDate.SelectedDate.HasValue)
             {
                 DateTime selectedDate = selectionDate.SelectedDate.Value;
+                this.Close();
             }
         }
     }

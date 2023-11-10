@@ -26,6 +26,7 @@ namespace BdeBGTD
             this.gestionnaire = gestionnaire;
         }
 
+
         private void ConfirmerButton_Click(object sender, RoutedEventArgs e)
         {
 
